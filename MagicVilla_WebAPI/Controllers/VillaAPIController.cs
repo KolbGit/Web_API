@@ -10,6 +10,10 @@ namespace MagicVilla_WebAPI.Controllers
     [ApiController]
     public class VillaAPIController : ControllerBase
     {
+        public VillaAPIController()
+        {
+        }
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<IEnumerable<VillaDTO>> GetVillas()
