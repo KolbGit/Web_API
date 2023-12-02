@@ -17,7 +17,7 @@ namespace MagicVilla_Web.Services
             this.httpClient = httpClient;
         }
 
-        public Task<T> SendAsync<T>(APIRequest apiRequest)
+        public async Task<T> SendAsync<T>(APIRequest apiRequest)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace MagicVilla_Web.Services
                         break;
                     default:
                         message.Method = HttpMethod.Get;
-                        break;
+                        break;  
 
                 }
 
