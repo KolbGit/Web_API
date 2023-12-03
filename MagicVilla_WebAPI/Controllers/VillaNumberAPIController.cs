@@ -2,6 +2,7 @@
 using MagicVilla_WebAPI.Models;
 using MagicVilla_WebAPI.Models.Dto;
 using MagicVilla_WebAPI.Repository.IRepostiory;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -74,7 +75,7 @@ namespace MagicVilla_WebAPI.Controllers
             }
             return _response;
         }
-
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -116,7 +117,7 @@ namespace MagicVilla_WebAPI.Controllers
             }
             return _response;
         }
-
+        [Authorize(Roles = "admin")]
         [HttpDelete("{id:int}", Name = "DeleteVillaNumber")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -146,7 +147,7 @@ namespace MagicVilla_WebAPI.Controllers
             }
             return _response;
         }
-
+        [Authorize(Roles = "admin")]
         [HttpPut("{id:int}", Name = "UpdateVillaNumber")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
