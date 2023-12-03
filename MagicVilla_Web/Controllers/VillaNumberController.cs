@@ -58,6 +58,7 @@ namespace MagicVilla_Web.Controllers
                 var response = await _villaNumberService.CreateAsync<APIResponse>(model.VillaNumber);
                 if (response != null && response.IsSuccess)
                 {
+                    TempData["success"] = "Villa created successfully";
                     return RedirectToAction(nameof(IndexVillaNumber));
                 }
                 else
@@ -78,6 +79,7 @@ namespace MagicVilla_Web.Controllers
                         Value = i.Id.ToString()
                     }); ;
             }
+            TempData["error"] = "Error encountered.";
             return View(model);
         }
 
@@ -123,6 +125,7 @@ namespace MagicVilla_Web.Controllers
                 {
                     if (response.ErrorMessages.Count > 0)
                     {
+                        TempData["success"] = "Villa updated successfully";
                         ModelState.AddModelError("ErrorMessages", response.ErrorMessages.FirstOrDefault());
                     }
                 }
@@ -138,6 +141,7 @@ namespace MagicVilla_Web.Controllers
                         Value = i.Id.ToString()
                     }); ;
             }
+            TempData["error"] = "Error encountered.";
             return View(model);
         }
 
@@ -175,9 +179,10 @@ namespace MagicVilla_Web.Controllers
             var response = await _villaNumberService.DeleteAsync<APIResponse>(model.VillaNumber.VillaNo);
             if (response != null && response.IsSuccess)
             {
+                TempData["success"] = "Villa deleted successfully";
                 return RedirectToAction(nameof(IndexVillaNumber));
             }
-
+            TempData["error"] = "Error encountered.";
             return View(model);
         }
     }
